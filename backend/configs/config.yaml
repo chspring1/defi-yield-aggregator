@@ -1,0 +1,35 @@
+server:
+  port: "8080"
+  mode: "debug"
+  read_timeout: 30
+  write_timeout: 30
+
+database:
+  host: "localhost"
+  port: "5432"
+  user: "mya_user"
+  password: "mya_password"
+  dbname: "mya_platform"
+  sslmode: "disable"
+
+redis:
+  host: "localhost"
+  port: "6379"
+  password: ""
+  db: 0
+
+kafka:
+  brokers:
+    - "localhost:9092"
+  group_id: "mya-api-group"
+  client_id: "mya-api-server"
+
+blockchain:
+  ethereum_rpc: "https://eth.llamarpc.com"
+  polygon_rpc: "https://polygon-rpc.com"
+  arbitrum_rpc: "https://arb1.arbitrum.io/rpc"
+  chain_id: 1
+
+auth:
+  jwt_secret: "your-super-secret-jwt-key-change-in-production"
+  jwt_duration: 24
