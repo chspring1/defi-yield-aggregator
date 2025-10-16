@@ -3,6 +3,7 @@ package middleware
 import (
 	"fmt"
 	"net/http"
+
 	"github.com/chspring1/mya-platform/backend/pkg/logger"
 	"github.com/gin-gonic/gin"
 )
@@ -41,13 +42,13 @@ func AuthRequired() gin.HandlerFunc {
 func AdminRequired() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		userAddress := c.GetHeader("X-User-Address")
-		
+
 		// 临时实现：检查特定管理员地址
 		adminAddresses := map[string]bool{
 			"0xAdminAddress": true,
 			"0x742d35Cc6634C0532925a3b8Dc9F1a37cD7e8b5d": true, // 示例地址
 		}
-		
+
 		if !adminAddresses[userAddress] {
 			logger.Info(fmt.Sprintf("Admin access denied for: %s", userAddress))
 			c.JSON(http.StatusForbidden, gin.H{
